@@ -17,35 +17,35 @@ require_once 'getIP_util.php';
 function getLocalOrPrivateIpInfo($ip){
     // ::1/128 is the only localhost ipv6 address. there are no others, no need to strpos this
     if ('::1' === $ip) {
-        return 'localhost IPv6 access';
+        return 'localhost IPv6 访问';
     }
     // simplified IPv6 link-local address (should match fe80::/10)
     if (stripos($ip, 'fe80:') === 0) {
-        return 'link-local IPv6 access';
+        return '链路本地 IPv6 访问';
     }
     // fc00::/7 Unique Local IPv6 Unicast Addresses
     if (preg_match('/^(fc|fd)([0-9a-f]{0,4}:){1,7}[0-9a-f]{1,4}$/i', $ip) === 1) {
-        return 'ULA IPv6 access';
+        return 'ULA IPv6 访问';
     }
     // anything within the 127/8 range is localhost ipv4, the ip must start with 127.0
     if (strpos($ip, '127.') === 0) {
-        return 'localhost IPv4 access';
+        return 'localhost IPv4 访问';
     }
     // 10/8 private IPv4
     if (strpos($ip, '10.') === 0) {
-        return 'private IPv4 access';
+        return '私有 IPv4 访问';
     }
     // 172.16/12 private IPv4
     if (preg_match('/^172\.(1[6-9]|2\d|3[01])\./', $ip) === 1) {
-        return 'private IPv4 access';
+        return '私有 IPv4 访问';
     }
     // 192.168/16 private IPv4
     if (strpos($ip, '192.168.') === 0) {
-        return 'private IPv4 access';
+        return '私有 IPv4 访问';
     }
     // IPv4 link-local
     if (strpos($ip, '169.254.') === 0) {
-        return 'link-local IPv4 access';
+        return '链路本地 IPv4 访问';
     }
     return null;
 }
