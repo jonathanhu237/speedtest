@@ -326,10 +326,10 @@
         color: #ffffff;
       }
       #startStopBtn:before {
-        content: "Start";
+        content: "开始测速";
       }
       #startStopBtn.running:before {
-        content: "Abort";
+        content: "停止测速";
       }
       #serverArea {
         margin-top: 1em;
@@ -500,21 +500,21 @@
         }
       }
     </style>
-    <title>LibreSpeed</title>
+    <title>中山大学东校园网络测速</title>
   </head>
   <body onload="initServers()">
-    <h1>LibreSpeed</h1>
+    <h1>中山大学东校园网络测速</h1>
     <div id="loading" class="visible">
-      <p id="message"><span class="loadCircle"></span>Selecting a server...</p>
+      <p id="message"><span class="loadCircle"></span>正在选择服务器...</p>
     </div>
     <div id="testWrapper" class="hidden">
       <div id="startStopBtn" onclick="startStop()"></div>
       <br />
       <a class="privacy" href="#" onclick="I('privacyPolicy').style.display=''"
-        >Privacy</a
+        >隐私说明</a
       >
       <div id="serverArea">
-        Server:
+        服务器:
         <select
           id="server"
           onchange="s.setSelectedServer(SPEEDTEST_SERVERS[this.value])"
@@ -523,25 +523,25 @@
       <div id="test">
         <div class="testGroup">
           <div class="testArea2">
-            <div class="testName">Ping</div>
+            <div class="testName">网络延迟</div>
             <div id="pingText" class="meterText" style="color: #aa6060"></div>
             <div class="unit">ms</div>
           </div>
           <div class="testArea2">
-            <div class="testName">Jitter</div>
+            <div class="testName">延迟抖动</div>
             <div id="jitText" class="meterText" style="color: #aa6060"></div>
             <div class="unit">ms</div>
           </div>
         </div>
         <div class="testGroup">
           <div class="testArea">
-            <div class="testName">Download</div>
+            <div class="testName">下载速度</div>
             <canvas id="dlMeter" class="meter"></canvas>
             <div id="dlText" class="meterText"></div>
             <div class="unit">Mbit/s</div>
           </div>
           <div class="testArea">
-            <div class="testName">Upload</div>
+            <div class="testName">上传速度</div>
             <canvas id="ulMeter" class="meter"></canvas>
             <div id="ulText" class="meterText"></div>
             <div class="unit">Mbit/s</div>
@@ -551,8 +551,8 @@
           <span id="ip"></span>
         </div>
         <div id="shareArea" style="display: none">
-          <h3>Share results</h3>
-          <p>Test ID: <span id="testId"></span></p>
+          <h3>分享测速结果</h3>
+          <p>测试 ID: <span id="testId"></span></p>
           <input
             type="text"
             value=""
@@ -563,48 +563,42 @@
           <img src="" id="resultsImg" />
         </div>
       </div>
-      <a href="https://github.com/librespeed/speedtest">Source code</a>
+      <a href="https://github.com/jonathanhu237/speedtest">源代码</a>
     </div>
     <div id="privacyPolicy" style="display: none">
-      <h2>Privacy Policy</h2>
-      <p>This HTML5 speed test server is configured with telemetry enabled.</p>
-      <h4>What data we collect</h4>
-      <p>At the end of the test, the following data is collected and stored:</p>
-      <ul>
-        <li>Test ID</li>
-        <li>Time of testing</li>
-        <li>Test results (download and upload speed, ping and jitter)</li>
-        <li>IP address</li>
-        <li>ISP information</li>
-        <li>Approximate location (inferred from IP address, not GPS)</li>
-        <li>User agent and browser locale</li>
-        <li>Test log (contains no personal information)</li>
-      </ul>
+      <h2>隐私政策</h2>
+      <p>此 HTML5 测速服务器已启用遥测功能。</p>
 
-      <h4>How we use the data</h4>
-      <p>Data collected through this service is used to:</p>
+      <h4>我们收集哪些数据</h4>
+      <p>在测试结束时，收集并存储以下数据：</p>
       <ul>
-        <li>Allow sharing of test results (sharable image for forums, etc.)</li>
-        <li>
-          To improve the service offered to you (for instance, to detect
-          problems on our side)
-        </li>
+        <li>测试ID</li>
+        <li>测试时间</li>
+        <li>测试结果 (下载和上传速度、延迟和抖动)</li>
+        <li>IP地址</li>
+        <li>ISP信息</li>
+        <li>大致位置 (通过IP地址推断，非GPS)</li>
+        <li>用户代理和浏览器区域设置</li>
+        <li>测试日志 (不含个人信息)</li>
       </ul>
-      No personal information is disclosed to third parties.
+      <h4>我们如何使用数据</h4>
+      <p>通过本服务收集的数据用于：</p>
+      <ul>
+        <li>允许分享测试结果 (可用于论坛等的可分享图片)</li>
+        <li>改善为您提供的服务 (例如，检测我方出现的问题)</li>
+      </ul>
+      <p>我们不会向第三方披露任何个人信息。</p>
 
-      <h4>Your consent</h4>
+      <h4>您的同意</h4>
+      <p>开始测试即表示您同意本隐私政策的条款。</p>
+
+      <h4>数据删除</h4>
       <p>
-        By starting the test, you consent to the terms of this privacy policy.
+        如果您希望删除您的信息，您需要提供测试ID或您的IP地址。这是识别您数据的唯一方法，没有这些信息我们将无法处理您的请求。<br /><br />
+        所有删除请求请联系此电子邮件地址：
+        <a href="mailto:huzzh3@mail2.sysu.edu.cn">huzzh3@mail2.sysu.edu.cn</a>.
       </p>
-      <h4>Data removal</h4>
-      <p>
-        If you want to have your information deleted, you need to provide either
-        the ID of the test or your IP address. This is the only way to identify
-        your data, without this information we won't be able to comply with your
-        request.<br /><br />
-        Contact this email address for all deletion requests:
-        <a href="mailto:PUT@YOUR_EMAIL.HERE">TO BE FILLED BY DEVELOPER</a>.
-      </p>
+
       <br /><br />
       <div class="closePrivacyPolicy">
         <a
